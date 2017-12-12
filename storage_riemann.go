@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"log"
 	"sync"
+	"time"
 
 	"github.com/blockchaindev/goryman"
 )
@@ -33,9 +34,21 @@ func NewRiemannStorage(c *Config) (RiemannStorage, error) {
 	r.Tags = c.Storage.Riemann.Tags
 
 	r.Client = goryman.NewGorymanClient(fmt.Sprint(c.Storage.Riemann.Host, ":", c.Storage.Riemann.Port))
-	err := r.Client.Connect()
+	var err error
+	for i := 0; i < 10; i++ {
+		log.Printf("Trying to connect to riemann, attemp %d", i)
+		err = r.Client.Connect()
+		if err != nil {
+			log.Printf("Could not connect to Riemann server: %v", err)
+		} else {
+			err = nil
+			break
+		}
+		time.Sleep(1000 * time.Millisecond)
+	}
+
 	if err != nil {
-		return r, fmt.Errorf("Could not connect to Riemann server: %v", err)
+		return r, err
 	}
 
 	return r, nil
