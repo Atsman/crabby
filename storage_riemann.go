@@ -35,7 +35,7 @@ func NewRiemannStorage(c *Config) (RiemannStorage, error) {
 
 	r.Client = goryman.NewGorymanClient(fmt.Sprint(c.Storage.Riemann.Host, ":", c.Storage.Riemann.Port))
 	var err error
-	for i := 0; i < 10; i++ {
+	for i := 0; true; i++ {
 		log.Printf("Trying to connect to riemann, attemp %d", i)
 		err = r.Client.Connect()
 		if err != nil {
