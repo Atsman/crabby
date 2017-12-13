@@ -1,3 +1,4 @@
 crabby
 config-*.yaml
 binaries/
+vendor/
