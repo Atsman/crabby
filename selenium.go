@@ -171,7 +171,7 @@ func (wr *webRequest) setRemote(remote string) error {
 
 func (wr *webRequest) fetchTiming(obj string) (float64, error) {
 	ss := fmt.Sprint("return window.performance.timing.", obj)
-	timing, err := wr.wd.ExecuteScript(ss, nil)
+	timing, err := wr.wd.ExecuteScript(ss, make([]interface{}, 0))
 	if err != nil {
 		return 0, fmt.Errorf("Could not fetch timing for %v: %v", obj, err)
 	}
