@@ -1,3 +1,5 @@
+[![Go Report Card](https://goreportcard.com/badge/github.com/Atsman/crabby)](https://goreportcard.com/report/github.com/Atsman/crabby)
+
 ![Crabby graph of Revinate Engineering Blog performance](https://chrissnell.github.io/crabby/images/engineering-blog-performance.png?1 "")
 
 # crabby
