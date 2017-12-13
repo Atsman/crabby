@@ -1,3 +1,4 @@
+[![MIT License][license-image]][license-url]
 [![Go Report Card](https://goreportcard.com/badge/github.com/Atsman/crabby)](https://goreportcard.com/report/github.com/Atsman/crabby)
 
 ![Crabby graph of Revinate Engineering Blog performance](https://chrissnell.github.io/crabby/images/engineering-blog-performance.png?1 "")
@@ -62,3 +63,13 @@ If you prefer, I've [uploaded some binaries](https://github.com/chrissnell/crabb
 # Crabby Configuration
 Crabby is configured by a YAML file that you pass via the `-config` flag (defaults to `config.yaml`).
 See [CONFIGURATION.md](/CONFIGURATION.md) for a detailed description of this file.  There is also [an example](/example/config.yaml), if you need one.
+
+## License
+
+[MIT](LICENSE)
+
+[license-url]: LICENSE
+
+[license-image]: https://img.shields.io/github/license/mashape/apistatus.svg
+
+[capture]: capture.png
