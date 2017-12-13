@@ -36,7 +36,7 @@ func NewRiemannStorage(c *Config) (RiemannStorage, error) {
 	r.Client = goryman.NewGorymanClient(fmt.Sprint(c.Storage.Riemann.Host, ":", c.Storage.Riemann.Port))
 	var err error
 	for i := 0; true; i++ {
-		log.Printf("Trying to connect to riemann, attemp %d", i)
+		log.Printf("Trying to connect to riemann, attempt %d", i)
 		err = r.Client.Connect()
 		if err != nil {
 			log.Printf("Could not connect to Riemann server: %v", err)
@@ -84,7 +84,7 @@ func (r RiemannStorage) processMetricsAndEvents(ctx context.Context, wg *sync.Wa
 				log.Println(err)
 			}
 		case <-ctx.Done():
-			log.Println("Cancellation request recieved.  Cancelling metrics processor.")
+			log.Println("Cancellation request received. Cancelling metrics processor.")
 			return
 		}
 	}

@@ -54,7 +54,7 @@ func (g GraphiteStorage) processMetrics(ctx context.Context, wg *sync.WaitGroup,
 				log.Println(err)
 			}
 		case <-ctx.Done():
-			log.Println("Cancellation request recieved.  Cancelling metrics processor.")
+			log.Println("Cancellation request received. Cancelling metrics processor.")
 			return
 		}
 	}

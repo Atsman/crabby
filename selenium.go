@@ -10,7 +10,7 @@ import (
 )
 
 /*
-	Order of occurance for available timing measurements:
+	Order of occurrence for available timing measurements:
 
 	navigationStart -> redirectStart -> redirectEnd -> fetchStart ->
 	domainLookupStart -> domainLookupEnd -> connectStart -> connectEnd ->
@@ -75,7 +75,7 @@ func RunSeleniumTest(j Job, seleniumServer string, storage *Storage) {
 	// and possibly others) that prevents you from setting cookies in Selenium
 	// when the browser is not already on the domain for which the cookies are
 	// being set.  To work around this, we need to first load a bogus page on
-	// the same domain (anything that generates a 404 is fine) before attempting
+	// the same domain (anything that generates a 404 is fine) before attemptting
 	// tos et the cookies.
 
 	// We only need to use this work-around if we have cookies to set
