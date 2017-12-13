@@ -104,6 +104,9 @@ func (r RiemannStorage) sendMetric(m Metric) error {
 		Service: metricName,
 		Metric:  m.Value,
 		Tags:    r.Tags,
+		Attributes: map[string]string{
+			"url": m.Url,
+		},
 	}
 
 	err := r.Client.SendEvent(ev)
@@ -135,6 +138,9 @@ func (r RiemannStorage) sendEvent(e Event) error {
 		Service: eventName,
 		State:   state,
 		Tags:    r.Tags,
+		Attributes: map[string]string{
+			"url": e.Url,
+		},
 	}
 
 	err := r.Client.SendEvent(ev)
@@ -143,5 +149,4 @@ func (r RiemannStorage) sendEvent(e Event) error {
 	}
 
 	return nil
-
 }
