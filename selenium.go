@@ -46,6 +46,7 @@ type requestIntervals struct {
 	serverProcessingDuration float64
 	serverResponseDuration   float64
 	domRenderingDuration     float64
+	totalLoadDuration        float64
 }
 
 // webRequest is a single test against a web server
@@ -134,6 +135,9 @@ func RunSeleniumTest(j Job, seleniumServer string, storage *Storage) {
 
 	fmt.Println(j.Name, "DOM rendering time:", wr.ri.domRenderingDuration)
 	storage.MetricDistributor <- makeMetric(j.Name, j.URL, "dom_rendering_duration", wr.ri.domRenderingDuration)
+
+	fmt.Println(j.Name, "Total load time:", wr.ri.totalLoadDuration)
+	storage.MetricDistributor <- makeMetric(j.Name, j.URL, "total_load_duration", wr.ri.totalLoadDuration)
 
 	err = wr.wd.Close()
 	if err != nil {
@@ -297,4 +301,8 @@ func (wr *webRequest) calcIntervals() {
 	// domRenderingDuration: Time to rendor the complete DOM
 	// domLoading -> domComplete
 	wr.ri.domRenderingDuration = wr.rt.domComplete - wr.rt.domLoading
+
+	// totalLoadDuration: Time from initial dns lookup to full dom render
+	// domainLookupStart -> domComplete
+	wr.ri.totalLoadDuration = wr.rt.domComplete - wr.rt.domainLookupStart
 }
