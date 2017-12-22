@@ -4,6 +4,10 @@
 
 ![Crabby graph of Revinate Engineering Blog performance](https://chrissnell.github.io/crabby/images/engineering-blog-performance.png?1 "")
 
+## Fork of [chrissnell/crabby](https://github.com/chrissnell/crabby)
+Forked due to inactivity of original author.
+This project is used in production at [vakantiediscounter.nl](https://www.vakantiediscounter.nl)
+
 # crabby
 **crabby** is a website performance tester that measures page load times and reports the measurements to a collection endpoint for processing, monitoring, and viewing.   Crabby can collect and report these metrics:
 
